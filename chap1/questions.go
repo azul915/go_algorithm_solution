@@ -2,6 +2,7 @@ package chap1
 
 import (
 	"fmt"
+	"math"
 )
 
 func ResponseFromChap1() string {
@@ -12,6 +13,7 @@ func hoge() string {
 	return "hoge"
 }
 
+// 1.1
 // Aさんの年齢が22歳、範囲が20歳以上36歳未満だとする
 func SearchAgeOfA() int {
 
@@ -33,4 +35,21 @@ func SearchAgeOfA() int {
 		}
 	}
 	return -1
+}
+
+// 1.2 2^6 = 64 < 100 < 2^7 = 128より、100通りを絞るには7回Yes/Noの質問が必要
+func CalcCountOfBinarySearch() {
+	requiredCounth := 0
+	max := 100
+
+	for {
+		limit := math.Pow(2, float64(requiredCounth))
+
+		if float64(max) < limit {
+			fmt.Printf("requiredCounth: %v limit: 2^%v = %v\n", requiredCounth, requiredCounth, limit)
+			break
+		}
+		requiredCounth++
+	}
+
 }

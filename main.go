@@ -8,5 +8,7 @@ import (
 
 func main() {
 
-	fmt.Println(chap1.SearchAgeOfA())
+	chap1.CalcCountOfBinarySearch()
+
+	fmt.Println("")
 }
