@@ -40,12 +40,12 @@ func SearchAgeOfA() int {
 // 1.2 2^6 = 64 < 100 < 2^7 = 128より、100通りを絞るには7回Yes/Noの質問が必要
 func CalcCountOfBinarySearch() {
 	requiredCounth := 0
-	max := 100
+	max := float64(100)
 
 	for {
 		limit := math.Pow(2, float64(requiredCounth))
 
-		if float64(max) < limit {
+		if max < limit {
 			fmt.Printf("requiredCounth: %v limit: 2^%v = %v\n", requiredCounth, requiredCounth, limit)
 			break
 		}
