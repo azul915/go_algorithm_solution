@@ -8,7 +8,7 @@ import (
 
 func main() {
 
-	chap1.CalcCountOfBinarySearch()
+	chap1.AlphameticsWithBlanks()
 
 	fmt.Println("")
 }
