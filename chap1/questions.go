@@ -54,6 +54,8 @@ func CalcCountOfBinarySearch() {
 
 }
 
+// 1.3
+
 //    2 a
 //  x b c
 // -------
@@ -61,7 +63,7 @@ func CalcCountOfBinarySearch() {
 //  f g
 // -------
 //  h 4 i
-func AlphameticsWithBlanks() {
+func AlphameticsWithBlanksA() {
 
 	for a := 0; a <= 9; a++ {
 		for b := 0; b <= 9; b++ {
@@ -112,3 +114,24 @@ func AlphameticsWithBlanks() {
 		}
 	}
 }
+
+// 1.4
+
+//                a  b  c  d  e  f
+//            x         g  h  i  j
+//           ---------------------
+//                6  6  k  l  m  n
+//             6  o  p  q  r  s
+//       t  u  6  6  6  v  w
+//       x  y  6  z aa  6
+//   -----------------------------
+//   ab ac ad ae  6  6 af ag ah ai
+
+func AlphameticsWithBlanksB() {
+	return
+}
+
+// 1.5
+
+// 1.6
+// - ダイクストラ法(公共交通機関乗換アプリ)
