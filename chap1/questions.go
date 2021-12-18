@@ -127,8 +127,162 @@ func AlphameticsWithBlanksA() {
 //   -----------------------------
 //   ab ac ad ae  6  6 af ag ah ai
 
+type I interface {
+	billion() int32
+	hundMillion() int32
+	tenMillion() int32
+	million() int32
+	hundThousand() int32
+	tenThousand() int32
+	thousand() int32
+	hundsand() int32
+	ten() int32
+	one() int32
+	number() int32
+}
+
+type ue struct {
+	HundThousand, TenThousand, Thousand, Hundred, Ten, One int32
+}
+
+func (u *ue) hundThousand() int32 {
+	return int32(100000) * u.HundThousand
+}
+
+func (u *ue) tenThousand() int32 {
+	return int32(10000) * u.TenThousand
+}
+
+func (u *ue) thousand() int32 {
+	return int32(1000) * u.Thousand
+}
+
+func (u *ue) hundred() int32 {
+	return int32(100) * u.Hundred
+}
+
+func (u *ue) ten() int32 {
+	return int32(10) * u.Ten
+}
+
+func (u *ue) one() int32 {
+	return u.One
+}
+
+func (u *ue) number() int32 {
+	return u.hundThousand() + u.tenThousand() +
+		u.thousand() + u.hundred() + u.ten() + u.one()
+}
+
+type shita struct {
+	Thousand, Hundred, Ten, One int32
+}
+
+func (s *shita) thousand() int32 {
+	return int32(1000) * s.Thousand
+}
+
+func (s *shita) hundred() int32 {
+	return int32(100) * s.Hundred
+}
+
+func (s *shita) ten() int32 {
+	return int32(10) * s.Ten
+}
+
+func (s *shita) one() int32 {
+	return s.One
+}
+
+func (s *shita) number() int32 {
+	return int32(1000)*s.Thousand + int32(100)*s.Hundred + int32(10)*s.Ten + s.One
+}
+
+type answer struct {
+	Billion, HundMillion, TenMillion, Million, HundThousand, TenThousand, Thousand, Hundred, Ten, One int32
+}
+
+func (a *answer) number() int32 {
+	return int32(1000000000)*a.Billion + int32(100000000)*a.HundMillion +
+		int32(10000000)*a.TenMillion + int32(1000000)*a.Million +
+		int32(100000)*a.HundThousand + int32(10000)*a.TenThousand +
+		int32(1000)*a.Thousand + int32(100)*a.Hundred + int32(10)*a.Ten + a.One
+}
+
+func (a *answer) billion() int32 {
+	return int32(1000000000) * a.Billion
+}
+
+func (a *answer) hundMillion() int32 {
+	return int32(100000000) * a.HundMillion
+}
+
+func (a *answer) tenMillion() int32 {
+	return int32(10000000) * a.TenMillion
+}
+
+func (a *answer) million() int32 {
+	return int32(1000000) * a.Million
+}
+
+func (a *answer) hundThousand() int32 {
+	return int32(100000) * a.HundThousand
+}
+
+func (a *answer) tenThousand() int32 {
+	return int32(10000) * a.TenThousand
+}
+
+func (a *answer) thousand() int32 {
+	return int32(1000) * a.Thousand
+}
+
+func (a *answer) hundred() int32 {
+	return int32(100) * a.Hundred
+}
+
+func (a *answer) ten() int32 {
+	return int32(10) * a.Ten
+}
+
+func (a *answer) one() int32 {
+	return a.One
+}
+
+//                a  b  c  d  e  f
+//            x         g  h  i  j
+//           ---------------------
+//                6  6  k  l  m  n
+//             6  o  p  q  r  s
+//       t  u  6  6  6  v  w
+//       x  y  6  z aa  6
+//   -----------------------------
+//   ab ac ad ae  6  6 af ag ah ai
+
+func dfs(upper ue, down shita) {
+
+	if upper.TenThousand*down.One != int32(6) ||
+		upper.HundThousand*down.One != int32(6) ||
+		upper.TenThousand*down.Ten != int32(6) ||
+		upper.Hundred*down.Hundred != int32(6) ||
+		upper.Thousand*down.Hundred != int32(6) ||
+		upper.TenThousand*down.Hundred != int32(6) ||
+		upper.One*down.Thousand != int32(6) ||
+		upper.Thousand*down.Thousand != int32(6) {
+
+	}
+
+}
+
 func AlphameticsWithBlanksB() {
-	return
+
+	u := ue{HundThousand: 1, TenThousand: 0, Thousand: 0, Hundred: 0, Ten: 0, One: 0}
+	s := shita{Thousand: 1, Hundred: 0, Ten: 0, One: 0}
+	_ = answer{Billion: 1, HundMillion: 0, TenMillion: 0, Million: 0,
+		HundThousand: 0, TenThousand: 0, Thousand: 0, Hundred: 0, Ten: 0, One: 0}
+
+	dfs(u, s)
+
 }
 
 // 1.5

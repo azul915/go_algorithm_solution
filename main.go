@@ -8,7 +8,7 @@ import (
 
 func main() {
 
-	chap1.AlphameticsWithBlanks()
+	chap1.AlphameticsWithBlanksB()
 
 	fmt.Println("")
 }
