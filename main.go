@@ -3,12 +3,11 @@ package main
 import (
 	"fmt"
 
-	"github.com/azul915/go_algorithm_solution/chap1"
+	_ "github.com/azul915/go_algorithm_solution/chap1"
+	"github.com/azul915/go_algorithm_solution/chap2"
 )
 
 func main() {
 
-	chap1.AlphameticsWithBlanksB()
-
-	fmt.Println("")
+	fmt.Println(chap2.Code2_4())
 }
