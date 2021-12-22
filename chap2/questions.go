@@ -9,9 +9,10 @@ import (
 // 2.4
 func Question2_4(k int, max int) {
 
-	targetAge := max
+	targetAge := max - 2
 	left := 0
-	right := int(math.Pow(float64(2), float64(k)))
+	// 2^k未満なので1引く
+	right := max - 1
 	count := 0
 
 	for left <= right {
@@ -32,9 +33,8 @@ func Question2_4(k int, max int) {
 
 func TestQuestion2_4() {
 
-	for chance := 2; chance <= 4; chance++ {
+	for chance := 1; chance <= 4; chance++ {
 		m := int(math.Pow(float64(2), float64(chance)))
 		Question2_4(chance, m)
 	}
-
 }
