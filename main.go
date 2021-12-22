@@ -10,5 +10,6 @@ import (
 
 func main() {
 
-	chap3.BinarySearchWithFoundIdSample(int32(7))
+	// chap3.BinarySearchWithFoundIdSample(int32(7))
+	chap3.SearchMinimumNumber()
 }
