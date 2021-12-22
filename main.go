@@ -4,10 +4,11 @@ import (
 	_ "fmt"
 
 	_ "github.com/azul915/go_algorithm_solution/chap1"
-	"github.com/azul915/go_algorithm_solution/chap2"
+	_ "github.com/azul915/go_algorithm_solution/chap2"
+	"github.com/azul915/go_algorithm_solution/chap3"
 )
 
 func main() {
 
-	chap2.TestQuestion2_4()
+	chap3.BinarySearchWithFoundIdSample(int32(7))
 }
