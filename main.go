@@ -10,6 +10,6 @@ import (
 
 func main() {
 
-	// chap3.UseBitCalcInSubsetSumProblem()
-	chap3.BitCheck()
+	chap3.UseBitCalcInSubsetSumProblem()
+	// chap3.BitCheck()
 }

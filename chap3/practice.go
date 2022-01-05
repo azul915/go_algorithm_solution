@@ -124,9 +124,7 @@ func UseBitCalcInSubsetSumProblem() {
 		for idx := 0; idx < N; idx++ {
 			// どこにもビットが立たないときは00000000となり、それ以外がどこかにbitが立つときである
 			// fmt.Printf("1<<bit: %v\n", 1<<bit)
-			fmt.Printf("bit: %v\n", bit)
-			fmt.Printf("bit&(1<<bit): %v\n", bit&(1<<bit))
-			if bit&(1<<bit) != 0 {
+			if bit&(1<<idx) != 0 {
 				sum += a[idx]
 			}
 		}
@@ -134,13 +132,12 @@ func UseBitCalcInSubsetSumProblem() {
 		if sum == W {
 			exists = true
 		}
-		// fmt.Printf("%v\n", sum)
 	}
 
 	if exists {
-		fmt.Printf("Yes")
+		fmt.Println("Yes")
 	} else {
-		fmt.Printf("No")
+		fmt.Println("No")
 	}
 }
 
