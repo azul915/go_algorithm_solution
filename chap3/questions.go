@@ -123,3 +123,24 @@ func Question3_5() {
 
 	fmt.Printf("min: %v", min)
 }
+
+// p.83
+// 3.6 AtCoder Beginner Contest 051 B - Sum of Three Integers
+// https://atcoder.jp/contests/abc051/tasks/abc051_b
+// 2つの正の整数K, Nが与えられる。0 <= X,Y,Z <= Kを満たす整数(X,Y,Z)の組であって
+// X + Y + Z = Nを満たすものが何通りあるかを求めるO(N^2)のアルゴリズム
+func Question3_6() {
+
+	count := 0
+	K, N := 2, 2
+	for X := 0; X <= K; X++ {
+		for Y := 0; Y <= K; Y++ {
+			Z := N - X - Y
+			if 0 <= Z && Z <= K {
+				fmt.Printf("X: %v, Y: %v, Z: %v\n", X, Y, Z)
+				count++
+			}
+		}
+	}
+	fmt.Printf("count: %v", count)
+}
