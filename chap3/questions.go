@@ -2,6 +2,7 @@ package chap3
 
 import (
 	"fmt"
+	"math"
 	"math/rand"
 )
 
@@ -63,4 +64,33 @@ func Question3_3() {
 		}
 		fmt.Printf("min: %v, second: %v\n", min, second)
 	}
+}
+
+// p.83
+// 3.4
+// N個の整数の中から2つを選んで差の最大値を求めるO(N)のアルゴリズム
+func Question3_4() {
+
+	a := []int{}
+	for idx := 0; idx < 10; idx++ {
+		a = append(a, rand.Intn(100))
+	}
+	fmt.Printf("a: %v\n", a)
+
+	N := len(a)
+	min := int(math.Inf(0)) - 1
+	max := int(math.Inf(0))
+
+	for idx := 0; idx < N; idx++ {
+		if a[idx] < min {
+			min = a[idx]
+		}
+
+		if max < a[idx] {
+			max = a[idx]
+		}
+	}
+	diff := max - min
+	fmt.Printf("max: %v, min: %v, diff: %v\n", max, min, diff)
+
 }
