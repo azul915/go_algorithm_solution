@@ -51,17 +51,14 @@ func Question3_3() {
 	fmt.Printf("a: %v\n", a)
 
 	N := len(a)
-	second := 1000
-	min := 999
+	min := 123456789
+	second := min - 1
 
 	for i := 0; i < N; i++ {
-		switch {
-		case a[i] < min:
+		if a[i] < min {
 			second = min
 			min = a[i]
-		case a[i] == min:
-			continue
-		case min < a[i] && a[i] < second:
+		} else if a[i] < second {
 			second = a[i]
 		}
 		fmt.Printf("min: %v, second: %v\n", min, second)
