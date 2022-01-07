@@ -10,5 +10,5 @@ import (
 
 func main() {
 
-	chap3.Question3_4()
+	chap3.Question3_5()
 }

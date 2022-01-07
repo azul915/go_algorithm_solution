@@ -95,3 +95,31 @@ func Question3_4() {
 	fmt.Printf("max: %v, min: %v, diff: %v\n", max, min, diff)
 
 }
+
+// p.83
+// 3.5 AtCoder Beginner Contest 081 B - Shift Only
+// https://atcoder.jp/contests/abc081/tasks/abc081_b
+// N個の正の整数に対してN個の整数がすべて偶数ならば2で割った値に置き換える操作を
+// 操作が行えなくなるまで繰り返したとき、何回できるかを求める。
+// N個の正の整数に対して、奇数になるまで2で割る操作を行い、その操作回数の最小値を取る
+func Question3_5() {
+
+	a := []int{382253568, 723152896, 37802240, 379425024, 404894720, 1471526144}
+	min := int(math.Inf(0)) - 1
+	N := len(a)
+
+	for idx := 0; idx < N; idx++ {
+		count := 0
+		for a[idx]%2 == 0 {
+			a[idx] /= 2
+			count++
+		}
+
+		if count < min {
+			min = count
+		}
+
+	}
+
+	fmt.Printf("min: %v", min)
+}
