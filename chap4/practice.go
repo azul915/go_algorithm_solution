@@ -46,3 +46,37 @@ func Code4_4() {
 	fmt.Printf("GCD(%v, %v) = %v\n", 51, 15, GCD(51, 15))
 	fmt.Printf("GCD(%v, %v) = %v\n", 15, 51, GCD(15, 51))
 }
+
+func fibo(n int) int {
+	if n == 0 {
+		return 0
+	}
+	if n == 1 {
+		return 1
+	}
+	return fibo(n-1) + fibo(n-2)
+}
+
+func Code4_5() {
+	fmt.Printf("fibo(%v) = %v\n", 6, fibo(6))
+}
+
+func fib(n int) int {
+
+	fmt.Printf("fib(%v) を呼び出しました\n", n)
+
+	if n == 0 {
+		return 0
+	}
+	if n == 1 {
+		return 1
+	}
+
+	result := fib(n-1) + fib(n-2)
+	fmt.Printf("%v項目 = %v\n", n, result)
+	return result
+}
+
+func Code4_6() {
+	fib(6)
+}
