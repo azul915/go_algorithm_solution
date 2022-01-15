@@ -112,13 +112,28 @@ func fibdp(n int) int {
 // メモ化再帰でのフィボナッチ数列
 func Code4_8() {
 
+	// メモ化用配列を-1で初期化する
 	for i := 0; i < 50; i++ {
 		memo[i] = -1
 	}
 
 	fibdp(49)
 
+	// memo[0], ... , memo[49]に答えが格納されている
 	for N := 2; N < 50; N++ {
 		fmt.Printf("%d 項目: %d\n", N, memo[N])
 	}
+}
+
+func partlySum(i int, w int, a *[]int) {
+	fmt.Printf("a: %v", *a)
+}
+
+func Code4_9() {
+	N, W := 4, 14
+	a := []int{3, 2, 6, 5}
+
+	// if partlySum(N, W, a)
+
+	partlySum(N, W, &a)
 }
