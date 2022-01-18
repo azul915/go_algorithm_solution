@@ -125,15 +125,38 @@ func Code4_8() {
 	}
 }
 
-func partlySum(i int, w int, a *[]int) {
-	fmt.Printf("a: %v", *a)
+func partlySum(i int, w int, a *[]int) bool {
+
+	// base case
+	if i == 0 {
+		if w == 0 {
+			return true
+		} else {
+			return false
+		}
+	}
+
+	// a[i-1]を選ぶ場合
+	if partlySum(i-1, w, a) {
+		return true
+	}
+
+	// a[i-1]を選ばない場合
+	if partlySum(i-1, w-(*a)[i-1], a) {
+		return true
+	}
+
+	return false
 }
 
 func Code4_9() {
 	N, W := 4, 14
 	a := []int{3, 2, 6, 5}
 
-	// if partlySum(N, W, a)
+	if partlySum(N, W, &a) {
+		fmt.Println("Yes")
+	} else {
+		fmt.Println("No")
+	}
 
-	partlySum(N, W, &a)
 }
