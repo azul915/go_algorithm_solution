@@ -67,3 +67,32 @@ func Question4_2() {
 	}
 	fmt.Println("...")
 }
+
+// p.542
+// 十進法表記で各桁の値が7,5,3のいずれかであり、
+// かつ7,5,3がいずれも一度以上は登場する整数を「753数」と呼ぶとき、
+// 正の整数K以下の「753数」が何個あるかを求める
+// Kの桁数をdとしてO(3^d)程度の計算量は許容できるものとする
+func func753(sft int, limit int, cnt *int) {
+
+	if limit < sft {
+		return
+	}
+	if 0 < sft {
+		(*cnt)++
+	}
+
+	// 10倍して1の位に7,5,3のいずれかを付与する
+	func753(sft*10+7, limit, cnt)
+	func753(sft*10+5, limit, cnt)
+	func753(sft*10+3, limit, cnt)
+}
+
+func Question4_5() {
+	K := 10
+
+	count := 0
+	func753(0, K, &count)
+
+	fmt.Printf("count: %d\n", count)
+}
