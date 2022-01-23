@@ -144,3 +144,27 @@ func Question3_6() {
 	}
 	fmt.Printf("count: %v", count)
 }
+
+// p.83
+// 3.7 AtCoder Beginner Contest 045 C - たくさんの数式
+// https://atcoder.jp/contests/abc045/tasks/arc061_a
+// 各桁の値が1以上9以下の数値のみである整数とみなせるような、長さNの文字列が与えられる。
+// この文字列の中で、文字と文字の間のうちのいくつかの場所に「+」を入れることができる。
+// 1つも入れなくても構わないが、「+」が連続してはいけない。このようにしてできる、全ての文字列を
+// 数値とみなして、総和を計算するO(2N)のアルゴリズム
+func Question3_7() {
+
+	S := "251"
+	N := len(a)
+
+	for i := 0; i < (1 << (N - 1)); i++ {
+		tmp := 0
+		for j := 0; j < N-1; j++ {
+			tmp *= 10
+			tmp += S[i:i+1] - '0'
+			if i&(1<<j) == 0 {
+				fmt.Printf("i: %v, j: %v\n", i, j)
+			}
+		}
+	}
+}
