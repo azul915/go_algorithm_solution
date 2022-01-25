@@ -13,6 +13,5 @@ import (
 
 func main() {
 
-	chap5.Code5_1()
-	chap5.Code5_3()
+	chap5.Code5_4()
 }

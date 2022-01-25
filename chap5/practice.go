@@ -38,9 +38,10 @@ func Code5_3() {
 	h := []float64{2, 9, 4, 5, 1, 6, 10}
 	N := len(h)
 
+	// init
 	dp := []float64{0}
 	for idx := 1; idx < N; idx++ {
-		dp = append(dp, float64(math.Inf(0))-1)
+		dp = append(dp, math.Inf(0)-1)
 	}
 
 	for idx := 1; idx < N; idx++ {
@@ -51,5 +52,28 @@ func Code5_3() {
 	}
 
 	fmt.Printf("dp[N-1]: %v\n", dp[N-1])
-	fmt.Printf("db: %v\n", dp)
+	fmt.Printf("dp: %v\n", dp)
+}
+
+func Code5_4() {
+	h := []float64{2, 9, 4, 5, 1, 6, 10}
+	N := len(h)
+
+	// init
+	dp := []float64{0}
+	for idx := 1; idx < N; idx++ {
+		dp = append(dp, math.Inf(0)-1)
+	}
+
+	for idx := 0; idx < N; idx++ {
+		if idx+1 < N {
+			chmin(&dp[idx+1], dp[idx]+math.Abs(h[idx+1]-h[idx]))
+		}
+		if idx+2 < N {
+			chmin(&dp[idx+2], dp[idx]+math.Abs(h[idx+2]-h[idx]))
+		}
+	}
+
+	fmt.Printf("dp[N-1]: %v\n", dp[N-1])
+	fmt.Printf("dp: %v\n", dp)
 }
