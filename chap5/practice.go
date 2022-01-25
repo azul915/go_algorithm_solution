@@ -66,12 +66,16 @@ func Code5_4() {
 	}
 
 	for idx := 0; idx < N; idx++ {
+		fmt.Printf("idx: %v\n", idx)
+		fmt.Printf("dp: %v\n", dp)
 		if idx+1 < N {
 			chmin(&dp[idx+1], dp[idx]+math.Abs(h[idx+1]-h[idx]))
 		}
+		fmt.Printf("dp: %v\n", dp)
 		if idx+2 < N {
 			chmin(&dp[idx+2], dp[idx]+math.Abs(h[idx+2]-h[idx]))
 		}
+		fmt.Printf("dp: %v\n", dp)
 	}
 
 	fmt.Printf("dp[N-1]: %v\n", dp[N-1])
