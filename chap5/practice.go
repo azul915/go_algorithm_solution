@@ -45,10 +45,17 @@ func Code5_3() {
 	}
 
 	for idx := 1; idx < N; idx++ {
+		fmt.Printf("idx: %v\n", idx)
+		fmt.Printf("dp: %v\n", dp)
+
 		chmin(&dp[idx], dp[idx-1]+math.Abs(h[idx]-h[idx-1]))
+
+		fmt.Printf("dp: %v\n", dp)
+
 		if idx > 1 {
 			chmin(&dp[idx], dp[idx-2]+math.Abs(h[idx]-h[idx-2]))
 		}
+		fmt.Printf("dp: %v\n", dp)
 	}
 
 	fmt.Printf("dp[N-1]: %v\n", dp[N-1])
