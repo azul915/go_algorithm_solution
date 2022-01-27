@@ -130,3 +130,47 @@ func Code5_5() {
 	fmt.Printf("rec(5): expect=4, actual=%v\n", rec(5))
 	fmt.Printf("rec(6): expect=8, actual=%v\n", rec(6))
 }
+
+var hh = []float64{2, 9, 4, 5, 1, 6, 10}
+var dp = []float64{0}
+var N = len(h)
+var INF = math.Inf(0)
+
+func recWithMemo(i int) float64 {
+
+	if dp[i] < INF {
+		return dp[i]
+	}
+
+	// base case
+	if i == 0 {
+		return 0
+	}
+
+	var res = math.Inf(0)
+	chmin(&res, recWithMemo(i-1)+math.Abs(hh[i]-hh[i-1]))
+	if 1 < i {
+		chmin(&res, recWithMemo(i-2)+math.Abs(hh[i]-hh[i-2]))
+	}
+
+	dp[i] = res
+	return dp[i]
+
+}
+
+func Code5_6() {
+
+	// init
+	for idx := 1; idx < N; idx++ {
+		dp = append(dp, INF)
+	}
+
+	// fmt.Printf("rec(0): expect=0, actual=%v\n", recWithMemo(0))
+	// fmt.Printf("rec(1): expect=7, actual=%v\n", recWithMemo(1))
+	// fmt.Printf("rec(2): expect=2, actual=%v\n", recWithMemo(2))
+	// fmt.Printf("rec(3): expect=3, actual=%v\n", recWithMemo(3))
+	// fmt.Printf("rec(4): expect=5, actual=%v\n", recWithMemo(4))
+	fmt.Printf("rec(5): expect=4, actual=%v\n", recWithMemo(5))
+	// fmt.Printf("rec(6): expect=8, actual=%v\n", recWithMemo(6))
+
+}
