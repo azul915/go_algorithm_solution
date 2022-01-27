@@ -42,7 +42,7 @@ func Code5_3() {
 	// init
 	dp := []float64{0}
 	for idx := 1; idx < N; idx++ {
-		dp = append(dp, math.Inf(0)-1)
+		dp = append(dp, math.Inf(0))
 	}
 
 	for idx := 1; idx < N; idx++ {
@@ -71,7 +71,7 @@ func Code5_4() {
 	// init
 	dp := []float64{0}
 	for idx := 1; idx < N; idx++ {
-		dp = append(dp, math.Inf(0)-1)
+		dp = append(dp, math.Inf(0))
 	}
 
 	for idx := 0; idx < N; idx++ {

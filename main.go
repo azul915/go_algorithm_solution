@@ -12,6 +12,6 @@ import (
 )
 
 func main() {
-
-	chap5.Code5_5()
+	chap5.Code5_3()
+	// chap5.Code5_6()
 }
