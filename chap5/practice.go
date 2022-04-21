@@ -3,6 +3,7 @@ package chap5
 import (
 	"fmt"
 	"math"
+	_ "reflect"
 )
 
 func Code5_1() {
@@ -173,4 +174,77 @@ func Code5_6() {
 	fmt.Printf("rec(5): expect=4, actual=%v\n", recWithMemo(5))
 	// fmt.Printf("rec(6): expect=8, actual=%v\n", recWithMemo(6))
 
+}
+
+// [問題]
+// N個の品物があり、i(=0, 1, .., N-1)番目の品物の重さはweight{i}, 価値はvalue{i}で与えられる
+// N個の品物から重さの総和がWを超えないようにいくつか選ぶとき、選んだ品物の価値の総和として考えられる最大値を求める
+
+// [定石]
+// N個の対象物{0, 1, ..., N-1}に関する問題に対して、最初のi個の対象物{0, 1, ..., i-1}に関する問題を部分問題として考える
+
+// [Note]
+// 0, 1, ..., i-1番目の品物からいくつか選んだあとに、i番目の品物を「選ぶ」「選ばない」という2通りの選択肢が存在する = 「各段階においていくつかの選択肢が存在する」
+// dp[i][w] : 最初のi個の品物{0, 1, ..., i-1}までの中から重さがwを超えないように選んだときの価値の総和の最大値
+// 動的計画法とは考えられる場合をグループごとにまとめるイメージの手法
+// 品物がないときは重さも価値もともに0なので、dp[0][w] = 0(w = 0, 1, ..., W)
+// dp[i+1][w] (w = 0, 1, ..., W)について場合分けして考える
+// A. i番目の品物を選ぶとき
+// 選んだときの価値を(i+1, w)とすると、選ぶ前の価値は(i, w-weight[i])と表すこととができる。そこにvalue[i]が加わるので
+// chmax(dp[i+1][w], dp[i][w-weight[i]]+value[i]) w - weight[i] >= 0の場合のみ
+// B. i番目の品物を選ばないとき
+// 重さや価値に変化はないので
+// chmax(dp[i+1][w], dp[i][w])
+
+func chmax(a *int, b int) {
+	if *a < b {
+		*a = b
+	}
+}
+
+func fmtdegit(num int) string {
+	if 99 < num {
+		return fmt.Sprintf("%d ", num)
+	} else if 9 < num {
+		return fmt.Sprintf(" %d ", num)
+	} else {
+		return fmt.Sprintf("  %d ", num)
+	}
+}
+
+func Code5_7() {
+
+	d := []struct {
+		weight int
+		value  int
+	}{
+		{2, 3}, {1, 2}, {3, 6}, {2, 1}, {1, 3}, {5, 85},
+	}
+	N, W := len(d), 15
+
+	// DPテーブル定義
+	// N:6, W: 15
+	// dp 7x16
+	dp := make([][]int, N+1)
+	for i := range dp {
+		dp[i] = make([]int, W+1)
+	}
+
+	for i := 0; i < N; i++ {
+		for w := 0; w <= W; w++ {
+			// i番目の品物を選ぶとき
+			if w-d[i].weight >= 0 {
+				chmax(&dp[i+1][w], dp[i][w-d[i].weight]+d[i].value)
+			}
+			// i番目の品物を選ばないとき
+			chmax(&dp[i+1][w], dp[i][w])
+		}
+	}
+
+	for x := 0; x < len(dp); x++ {
+		for y := 0; y < len(dp[x]); y++ {
+			fmt.Print(fmtdegit(dp[x][y]))
+		}
+		fmt.Println("")
+	}
 }
