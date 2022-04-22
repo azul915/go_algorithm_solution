@@ -192,9 +192,10 @@ func Code5_6() {
 // A. i番目の品物を選ぶとき
 // 選んだときの価値を(i+1, w)とすると、選ぶ前の価値は(i, w-weight[i])と表すこととができる。そこにvalue[i]が加わるので
 // chmax(dp[i+1][w], dp[i][w-weight[i]]+value[i]) w - weight[i] >= 0の場合のみ
+// w - weight[i] >= 0という条件は、wを超えてはならない最大化問題であるということ
 // B. i番目の品物を選ばないとき
 // 重さや価値に変化はないので
-// chmax(dp[i+1][w], dp[i][w])
+// chmax(dp[i+1][w], dp[i][w]) ちなみに、w = 0のとき、i番目の品物を選ぶことは絶対にない(w = 0なので、重さ0を超えてはならない)
 
 func chmax(a *int, b int) {
 	if *a < b {
@@ -210,6 +211,16 @@ func fmtdegit(num int) string {
 	} else {
 		return fmt.Sprintf("  %d ", num)
 	}
+}
+
+func printTable(table [][]int) {
+	for _, iv := range table {
+		for _, wv := range iv {
+			fmt.Print(fmtdegit(wv))
+		}
+		fmt.Println("")
+	}
+	fmt.Println("")
 }
 
 func Code5_7() {
@@ -229,6 +240,7 @@ func Code5_7() {
 	for i := range dp {
 		dp[i] = make([]int, W+1)
 	}
+	printTable(dp)
 
 	for i := 0; i < N; i++ {
 		for w := 0; w <= W; w++ {
@@ -239,12 +251,7 @@ func Code5_7() {
 			// i番目の品物を選ばないとき
 			chmax(&dp[i+1][w], dp[i][w])
 		}
+		printTable(dp)
 	}
-
-	for x := 0; x < len(dp); x++ {
-		for y := 0; y < len(dp[x]); y++ {
-			fmt.Print(fmtdegit(dp[x][y]))
-		}
-		fmt.Println("")
-	}
+	printTable(dp)
 }
