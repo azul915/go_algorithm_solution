@@ -25,7 +25,7 @@ int func(int i, int w, const vector<int> &a) {
     return memo[i][w] = 0;
 }
 
-// g++ -std=c++11 -o foo foo.cpp && ./foo
+// if [ -e "foo" ];then rm foo;fi;g++ -std=c++11 -o foo foo.cpp && ./foo
 int main() {
     // 入力
     int N, W;
