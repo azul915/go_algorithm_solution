@@ -1,9 +1,9 @@
 package chap5
 
 import (
+	helper "algorithm_solution/pkg"
 	"fmt"
 	"math"
-	_ "reflect"
 )
 
 func Code5_1() {
@@ -254,4 +254,67 @@ func Code5_7() {
 		printTable(dp)
 	}
 	printTable(dp)
+}
+
+// [問題]
+// 2つの文字列S, Tが与えられます。Sに以下の3通りの操作を繰り返し施すことでTに変換したいものとします
+// そのような一連の操作のうち、操作回数の最小値を求めてください。
+// なお、この最小値をSとTとの編集距離と呼びます
+// 変更: S中の文字を1つ選んで任意の文字に変更する
+// 削除: S中の文字を1つ選んで削除する
+// 挿入: Sの好きな箇所に好きな文字を1文字挿入する
+
+// 2つの文字列S, Tの編集距離における
+// 片方の文字列Sへの挿入操作は、もう一方のの文字列Tの削除操作と等価のものとして扱えることがポイント
+
+// dp[i][j]: Sの最初のi文字分と、Tの最初のj文字分との間の編集距離
+// dp[0][0] = 0: Sの最初の0文字分とTの最初の0文字分がともに空の文字列を表しており、空の文字列同士は特に変更操作を実施することがないから0となる
+// 遷移を考えたときに、Sの最初のi文字分とTの最初のj文字分とで、それぞれ最後の1文字をどのように対応したかで場合分けする
+// 変更操作(Sのi文字目とTのj文字目とを対応させる)
+//     1. 一致するとき: コストなし、つまりchmin(dp[i][j], dp[i-1][j-1])
+//     2. 一致しないとき: コスト+1、つまりchmin(dp[i][j], dp[i-1][j-1]+1)
+// 削除操作(Sのi文字目を削除)
+//     1. コスト+1、つまりchmin(dp[i][j], dp[i-1][j]+1)
+// 挿入操作(Tのj文字目を削除)
+//     1. コスト+1、つまりchmin(dp[i][j], dp[i][j-1]+1)
+
+func Code5_8() {
+	S, T := "logistic", "algorithm"
+
+	dp := make([][]int, len(S)+1)
+	for i := range dp {
+		dp[i] = make([]int, len(T)+1)
+	}
+
+	for si := 0; si <= len(S)+1; si++ {
+		for ti := 0; ti < len(T); ti++ {
+			if si == 0 && ti == 0 {
+				dp[ti][si] = 0
+			} else {
+				dp[ti][si] = math.MaxInt
+			}
+		}
+	}
+
+	// printTable(dp)
+
+	for si := 0; si <= len(S); si++ {
+		for ti := 0; ti <= len(T); ti++ {
+			if 0 < si && 0 < ti {
+				if string(S[si-1]) == string(T[ti-1]) {
+					helper.ChMin(&dp[si][ti], dp[si-1][ti-1])
+				} else {
+					helper.ChMin(&dp[si][ti], dp[si-1][ti-1]+1)
+				}
+			}
+			if 0 < si {
+				helper.ChMin(&dp[si][ti], dp[si-1][ti]+1)
+			}
+			if 0 < ti {
+				helper.ChMin(&dp[si][ti], dp[si][ti-1]+1)
+			}
+		}
+	}
+	printTable(dp)
+	fmt.Println(dp[len(S)][len(T)])
 }

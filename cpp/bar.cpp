@@ -28,10 +28,14 @@ int main() {
     string T = "algorithm";
 
     vector<vector<int>> dp(S.size()+1, vector<int>(T.size()+1, INF));
+    cout << dp.size() << endl;
+    cout << dp[0].size() << endl;
 
     dp[0][0] = 0;
 
     printTable(dp);
+    cout << endl;
+
     // DPループ
     for (int i = 0; i <= S.size(); ++i) {
         for (int j = 0; j <= T.size(); ++j) {
@@ -48,6 +52,7 @@ int main() {
         }
     }
     printTable(dp);
+    cout << endl;
 
     cout << dp[S.size()][T.size()] << endl;
 }
