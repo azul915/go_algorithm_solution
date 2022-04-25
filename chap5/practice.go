@@ -203,7 +203,7 @@ func chmax(a *int, b int) {
 	}
 }
 
-func fmtdegit(num int) string {
+func FmtDegit(num int) string {
 	if 99 < num {
 		return fmt.Sprintf("%d ", num)
 	} else if 9 < num {
@@ -213,10 +213,10 @@ func fmtdegit(num int) string {
 	}
 }
 
-func printTable(table [][]int) {
+func PrintTable(table [][]int) {
 	for _, iv := range table {
 		for _, wv := range iv {
-			fmt.Print(fmtdegit(wv))
+			fmt.Print(FmtDegit(wv))
 		}
 		fmt.Println("")
 	}
@@ -240,7 +240,7 @@ func Code5_7() {
 	for i := range dp {
 		dp[i] = make([]int, W+1)
 	}
-	printTable(dp)
+	PrintTable(dp)
 
 	for i := 0; i < N; i++ {
 		for w := 0; w <= W; w++ {
@@ -251,9 +251,9 @@ func Code5_7() {
 			// i番目の品物を選ばないとき
 			chmax(&dp[i+1][w], dp[i][w])
 		}
-		printTable(dp)
+		PrintTable(dp)
 	}
-	printTable(dp)
+	PrintTable(dp)
 }
 
 // [問題]
@@ -315,7 +315,7 @@ func Code5_8() {
 			}
 		}
 	}
-	printTable(dp)
+	PrintTable(dp)
 	fmt.Println(dp[len(S)][len(T)])
 }
 
