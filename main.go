@@ -7,9 +7,10 @@ import (
 	_ "algorithm_solution/chap2"
 	_ "algorithm_solution/chap3"
 	_ "algorithm_solution/chap4"
-	"algorithm_solution/chap5"
+	_ "algorithm_solution/chap5"
+	"algorithm_solution/chap6"
 )
 
 func main() {
-	chap5.Question5_1()
+	chap6.Code6_5()
 }
