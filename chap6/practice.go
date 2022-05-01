@@ -1,9 +1,13 @@
 package chap6
 
 import (
+	helper "algorithm_solution/pkg"
 	"bufio"
 	"fmt"
+	"math"
+
 	"os"
+	"sort"
 )
 
 func Code6_1() {
@@ -38,7 +42,7 @@ func P(x int) bool {
 	return true
 }
 
-func binarySearchB() int {
+func Code6_2() int {
 
 	var left, right int
 	for 1 < right-left {
@@ -52,7 +56,7 @@ func binarySearchB() int {
 	return right
 }
 
-func Code6_5() {
+func Code6_3() {
 	fmt.Println("Start Game")
 	left, right := 20, 36
 
@@ -71,4 +75,23 @@ func Code6_5() {
 	}
 
 	fmt.Printf("The age is %d\n", left)
+}
+
+func Code6_4() {
+	min := math.MaxInt
+	K := 3
+	a := []int{3, 5, 8, 10, 14, 17, 21, 39}
+
+	b := []int{4, 2, 9, 14, 7, 18, 20, 29}
+	sort.Ints(b)
+
+	for i := 0; i < len(a); i++ {
+		iter := helper.LowerBound(K-a[i], b)
+		val := b[iter]
+		if a[i]+val < min {
+			min = a[i] + val
+		}
+	}
+
+	fmt.Println(min)
 }
