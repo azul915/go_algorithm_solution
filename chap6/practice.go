@@ -95,3 +95,34 @@ func Code6_4() {
 
 	fmt.Println(min)
 }
+
+func Code6_5() {
+	N := 7
+	h := []int{5, 12, 14, 21}
+	s := []int{6, 4, 7, 2}
+	left, right := 0, math.MaxInt
+	t := []int{}
+	for 1 < right-left {
+		mid := (left + right) / 2
+		ok := true
+		for i := 0; i < N; i++ {
+			if mid == h[i] {
+				ok = false
+			} else {
+				t[i] = (mid - h[i]) / s[i]
+			}
+		}
+		sort.Ints(t)
+		for i := 0; i < N; i++ {
+			if t[i] < i {
+				ok = false
+			}
+		}
+		if ok {
+			right = mid
+		} else {
+			left = mid
+		}
+	}
+	fmt.Println(right)
+}
