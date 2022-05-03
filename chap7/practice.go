@@ -49,3 +49,19 @@ func Code7_2() {
 	}
 	fmt.Println(res)
 }
+
+func Code7_3() {
+	A := []int{8, 5, 9, 6, 3, 7}
+	B := []int{3, 2, 5, 2, 4, 3}
+	sum := 0
+	for i := len(A) - 1; 0 <= i; i-- {
+		A[i] += sum
+		amari := A[i] % B[i]
+		D := 0
+		if amari != 0 {
+			D = B[i] - amari
+		}
+		sum += D
+	}
+	fmt.Println(sum)
+}
