@@ -83,3 +83,70 @@ func Code4() {
 		printList()
 	}
 }
+
+// Bidirectional(双方向の)
+type BidNode struct {
+	Prev *BidNode
+	Next *BidNode
+	Name string
+}
+
+func Code6() {
+
+	sentinel := &BidNode{}
+	(func() {
+		sentinel.Prev = sentinel
+		sentinel.Next = sentinel
+	})()
+
+	printList := func() {
+		cur := sentinel.Next
+		for ; cur != sentinel; cur = cur.Next {
+			fmt.Printf("%v -> ", cur.Name)
+		}
+		fmt.Println("")
+	}
+
+	// ac -> abc
+	insert := func(v *BidNode) {
+		v.Next = sentinel.Next
+		sentinel.Next.Prev = v
+		sentinel.Next = v
+		v.Prev = sentinel
+	}
+
+	// abc -> ac
+	//  c.Prev = b.Prev
+	//    b.Next.Prev = b.Prev
+	// a.Next = b.Next
+	//    b.Prev.Next = b.Next
+	erase := func(v *BidNode) {
+		if v == sentinel {
+			return
+		}
+		v.Prev.Next = v.Next
+		v.Next.Prev = v.Prev
+	}
+	names := []string{"yamamoto", "watanabe", "ito", "takahashi", "suzuki", "sato"}
+
+	var watanabe *BidNode
+	// 連結リスト作成
+	// 各ノードを生成して連結リストの先頭に挿入していく
+	for i, name := range names {
+		bn := &BidNode{Prev: nil, Next: nil, Name: name}
+		insert(bn)
+		fmt.Printf("step %v:", i)
+		if name == "watanabe" {
+			watanabe = bn
+		}
+		printList()
+	}
+	// 「watanabe」ノードを削除する
+	// 削除前
+	printList()
+
+	erase(watanabe)
+	// 削除後
+	printList()
+
+}
