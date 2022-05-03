@@ -10,9 +10,10 @@ import (
 	_ "algorithm_solution/chap5"
 	_ "algorithm_solution/chap6"
 	_ "algorithm_solution/chap7"
-	"algorithm_solution/chap8"
+	_ "algorithm_solution/chap8"
+	"algorithm_solution/chap9"
 )
 
 func main() {
-	chap8.Code6()
+	chap9.Code2()
 }
