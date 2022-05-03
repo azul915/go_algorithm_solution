@@ -55,23 +55,24 @@ func printLinkedList(head *Node) {
 }
 
 func Code4() {
-	var sentinel *Node
+	sentinel := &Node{}
+
 	init := func() {
-		sent := &Node{}
-		sentinel.Next = sent
+		sentinel.Next = sentinel
 	}
 	init()
-	insert := func(v *Node) {
-		p := sentinel
-		v.Next = p.Next
-		p.Next = v
-	}
 
 	printList := func() {
 		cur := sentinel.Next
-		for cur != nil {
+		for ; cur != sentinel; cur = cur.Next {
 			fmt.Printf("%v -> ", cur.Name)
 		}
+		fmt.Println("")
+	}
+
+	insert := func(v *Node) {
+		v.Next = sentinel.Next
+		sentinel.Next = v
 	}
 
 	names := []string{"yamamoto", "watanabe", "ito", "takahashi", "suzuki", "sato"}
