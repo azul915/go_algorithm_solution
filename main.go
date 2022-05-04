@@ -4,6 +4,8 @@ import (
 	_ "fmt"
 
 	_ "algorithm_solution/chap1"
+
+	"algorithm_solution/chap10"
 	_ "algorithm_solution/chap2"
 	_ "algorithm_solution/chap3"
 	_ "algorithm_solution/chap4"
@@ -11,9 +13,9 @@ import (
 	_ "algorithm_solution/chap6"
 	_ "algorithm_solution/chap7"
 	_ "algorithm_solution/chap8"
-	"algorithm_solution/chap9"
+	_ "algorithm_solution/chap9"
 )
 
 func main() {
-	chap9.Code2()
+	chap10.Code4()
 }
