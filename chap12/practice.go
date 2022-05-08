@@ -1,6 +1,8 @@
 package chap12
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func Code1() {
 	sl := []int{4, 1, 5, 3, 2}
@@ -89,35 +91,70 @@ func quickSort(a []int, left, right int) {
 	quickSort(a, i+1, right)
 }
 
-func Code4() {
-	sl := []int{4, 1, 5, 3, 2}
-	heapSort(sl)
-	fmt.Println(sl)
-}
+// func Code4() {
+// 	sl := []int{4, 1, 5, 3, 2}
+// 	heapSort(sl)
+// 	fmt.Println(sl)
+// }
 
-func heapSort(a []int) {
-	N := len(a)
-	for i := N/2 - 1; 0 <= N; i-- {
-		Heapify(a, i, N)
-	}
+// func heapSort(a []int) {
+// 	N := len(a)
+// 	for i := N/2 - 1; 0 <= N; i-- {
+// 		Heapify(a, i, N)
+// 	}
 
-	for i := N - 1; 0 < i; i-- {
-		a[0], a[i] = a[i], a[0]
-		Heapify(a, 0, i)
-	}
-}
+// 	for i := N - 1; 0 < i; i-- {
+// 		a[0], a[i] = a[i], a[0]
+// 		Heapify(a, 0, i)
+// 	}
+// }
 
-func Heapify(a []int, i, N int) {
-	child1 := i*2 + 1
-	if N <= child1 {
-		return
-	}
-	if child1+1 < N && a[child1] < a[child1+1] {
-		child1++
-	}
-	if a[child1] <= a[i] {
-		return
-	}
-	a[i], a[child1] = a[child1], a[i]
-	Heapify(a, child1, N)
-}
+// func Heapify(a []int, i, N int) {
+// 	child1 := i*2 + 1
+// 	if N <= child1 {
+// 		return
+// 	}
+// 	if child1+1 < N && a[child1] < a[child1+1] {
+// 		child1++
+// 	}
+// 	if a[child1] <= a[i] {
+// 		return
+// 	}
+// 	a[i], a[child1] = a[child1], a[i]
+// 	Heapify(a, child1, N)
+// }
+
+// func Code5() {
+// 	sl := []int{4, 1, 5, 3, 2}
+// 	bucketSort(sl)
+// 	fmt.Println(sl)
+// }
+
+// func bucketSort(a []int) {
+// 	N := len(a)
+// 	MAX := 100000
+
+// 	num := make([]int, MAX)
+// 	for i := range num {
+// 		num[i] = 0
+// 	}
+// 	for i := 0; i < N; i++ {
+// 		num[a[i]]++
+// 	}
+
+// 	sum := make([]int, MAX)
+// 	for i := range sum {
+// 		sum[i] = 0
+// 	}
+// 	for v := 1; v < MAX; v++ {
+// 		sum[v] = sum[v-1] + sum[v]
+// 	}
+
+// 	a2 := make([]int, N)
+// 	for i := N - 1; 0 <= i; i-- {
+// 		idx := sum[a[i]]
+// 		idx--
+// 		a2[idx] = a[i]
+// 	}
+// 	a = a2
+// }

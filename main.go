@@ -17,5 +17,5 @@ import (
 )
 
 func main() {
-	chap12.Code3()
+	chap12.Code5()
 }
