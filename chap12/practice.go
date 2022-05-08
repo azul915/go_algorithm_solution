@@ -88,3 +88,36 @@ func quickSort(a []int, left, right int) {
 	quickSort(a, left, i)
 	quickSort(a, i+1, right)
 }
+
+func Code4() {
+	sl := []int{4, 1, 5, 3, 2}
+	heapSort(sl)
+	fmt.Println(sl)
+}
+
+func heapSort(a []int) {
+	N := len(a)
+	for i := N/2 - 1; 0 <= N; i-- {
+		Heapify(a, i, N)
+	}
+
+	for i := N - 1; 0 < i; i-- {
+		a[0], a[i] = a[i], a[0]
+		Heapify(a, 0, i)
+	}
+}
+
+func Heapify(a []int, i, N int) {
+	child1 := i*2 + 1
+	if N <= child1 {
+		return
+	}
+	if child1+1 < N && a[child1] < a[child1+1] {
+		child1++
+	}
+	if a[child1] <= a[i] {
+		return
+	}
+	a[i], a[child1] = a[child1], a[i]
+	Heapify(a, child1, N)
+}
