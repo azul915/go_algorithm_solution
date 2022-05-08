@@ -62,3 +62,29 @@ func mergeSort(a []int, left, right int) {
 		}
 	}
 }
+
+func Code3() {
+	sl := []int{4, 1, 5, 3, 2}
+	quickSort(sl, 0, len(sl))
+	fmt.Println(sl)
+}
+
+func quickSort(a []int, left, right int) {
+	if right-left < 2 {
+		return
+	}
+	piv_idx := left + (right-left)/2
+	pivot := a[piv_idx]
+	a[piv_idx], a[right-1] = a[right-1], a[piv_idx]
+	i := left
+	for j := left; j < right-1; j++ {
+		if a[j] < pivot {
+			a[i], a[j] = a[j], a[i]
+			i++
+		}
+	}
+	a[i], a[right-1] = a[right-1], a[i]
+
+	quickSort(a, left, i)
+	quickSort(a, i+1, right)
+}
