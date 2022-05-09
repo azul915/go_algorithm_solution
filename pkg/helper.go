@@ -79,3 +79,7 @@ func (s *Stack[T]) Pop() T {
 	(*s) = (*s)[:len(*s)-1]
 	return v
 }
+
+func (s *Stack[T]) Empty() bool {
+	return len(*s) == 0
+}
