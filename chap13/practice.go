@@ -10,8 +10,10 @@ type Graph [][]int
 func Code1() {
 	g := &Graph{{1, 2, 4}, {0, 3, 8}, {0, 5}, {1, 7, 8}, {0, 8}, {2, 6, 8}, {5, 7}, {3, 6}, {1, 3, 4, 5}}
 	search(g, 0)
+	fmt.Println(g)
 }
 
+// bfs
 func search(G *Graph, s int) {
 	N := len(*G)
 
@@ -36,3 +38,8 @@ func search(G *Graph, s int) {
 		}
 	}
 }
+
+// dfs
+// func code1dfs(G *Graph, s int) {
+
+// }
