@@ -37,3 +37,28 @@ func LowerBound(key int, nums []int) int {
 	}
 	return right
 }
+
+type Queue[T any] []T
+
+func NewQueue[T any]() Queue[T] {
+	v := make(Queue[T], 0)
+	return v
+}
+
+func (q *Queue[T]) Enqueue(x T) {
+	*q = append(*q, x)
+}
+
+func (q *Queue[T]) Dequeue() T {
+	v := (*q)[0]
+	(*q) = (*q)[1:]
+	return v
+}
+
+func (q *Queue[T]) Front() T {
+	return (*q)[0]
+}
+
+func (q *Queue[T]) Empty() bool {
+	return len(*q) == 0
+}

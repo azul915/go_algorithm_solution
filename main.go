@@ -5,7 +5,8 @@ import (
 
 	_ "algorithm_solution/chap1"
 	_ "algorithm_solution/chap10"
-	"algorithm_solution/chap12"
+	_ "algorithm_solution/chap12"
+	"algorithm_solution/chap13"
 	_ "algorithm_solution/chap2"
 	_ "algorithm_solution/chap3"
 	_ "algorithm_solution/chap4"
@@ -17,5 +18,5 @@ import (
 )
 
 func main() {
-	chap12.Code5()
+	chap13.Code1()
 }
