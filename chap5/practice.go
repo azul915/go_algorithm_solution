@@ -1,7 +1,7 @@
 package chap5
 
 import (
-	helper "algorithm_solution/pkg"
+	"algorithm_solution/pkg/helper"
 	"fmt"
 	"math"
 )

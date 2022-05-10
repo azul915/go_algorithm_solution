@@ -2,7 +2,7 @@ package chap5
 
 import (
 	// "fmt"
-	helper "algorithm_solution/pkg"
+	"algorithm_solution/pkg/helper"
 )
 
 // p.154

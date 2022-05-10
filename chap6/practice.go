@@ -1,7 +1,7 @@
 package chap6
 
 import (
-	helper "algorithm_solution/pkg"
+	"algorithm_solution/pkg/helper"
 	"bufio"
 	"fmt"
 	"math"

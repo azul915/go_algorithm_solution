@@ -1,7 +1,7 @@
 package chap13
 
 import (
-	helper "algorithm_solution/pkg"
+	"algorithm_solution/pkg/helper"
 	"fmt"
 )
 
@@ -90,4 +90,38 @@ func dfs(G *Graph, v int, seen []bool) {
 		}
 		dfs(G, next, seen)
 	}
+}
+
+func Code3() {
+	g := &Graph{{1, 2, 4}, {0, 3, 4, 8}, {0, 5}, {1, 7, 8}, {0, 1, 8}, {2, 6, 8}, {5, 7}, {3, 6}, {1, 3, 4, 5}}
+	dist := bfs(g, 0)
+	for _, el := range dist {
+		fmt.Println(el)
+	}
+}
+
+func bfs(G *Graph, s int) []int {
+	N := len(*G)
+	dist := make([]int, N)
+	for i := range dist {
+		dist[i] = -1
+	}
+	que := helper.NewQueue[int]()
+
+	dist[0] = 0
+	que.Enqueue(0)
+
+	for !que.Empty() {
+		v := que.Dequeue()
+
+		for _, x := range (*G)[v] {
+			if dist[x] != -1 {
+				continue
+			}
+			dist[x] = dist[v] + 1
+			que.Enqueue(x)
+
+		}
+	}
+	return dist
 }
