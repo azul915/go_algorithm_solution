@@ -68,3 +68,26 @@ func (sh *Search) Dfs(G *Graph, s int) {
 		}
 	}
 }
+
+func Code2() {
+	seen := make([]bool, 8)
+	G := &Graph{{5}, {6, 3}, {5, 7}, {0, 7}, {1, 6}, {}, {7}, {0}}
+
+	for v := 0; v < len(*G); v++ {
+		if seen[v] {
+			continue
+		}
+		dfs(G, v, seen)
+	}
+}
+
+func dfs(G *Graph, v int, seen []bool) {
+	seen[v] = true
+	fmt.Printf("visited: %v\n", v)
+	for _, next := range (*G)[v] {
+		if seen[next] {
+			continue
+		}
+		dfs(G, next, seen)
+	}
+}
