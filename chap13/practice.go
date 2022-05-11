@@ -125,3 +125,30 @@ func bfs(G *Graph, s int) []int {
 	}
 	return dist
 }
+
+type C4 struct{}
+
+func (c4 *C4) Dfs(G *Graph, v int, seen []bool) {
+	seen[v] = true
+
+	for _, next := range (*G)[v] {
+		if seen[next] {
+			continue
+		}
+		c4.Dfs(G, next, seen)
+	}
+}
+
+func Code4() {
+	g := &Graph{{5}, {6, 3}, {5, 7}, {0, 7}, {1, 6}, {}, {7}, {0}}
+	seen := make([]bool, len(*g))
+	c4 := &C4{}
+	c4.Dfs(g, 0, seen)
+	for i := range seen {
+		if seen[i] {
+			fmt.Println("Yes")
+		} else {
+			fmt.Println("No")
+		}
+	}
+}
