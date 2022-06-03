@@ -1,10 +1,11 @@
 package chap6
 
 import (
-	"algorithm_solution/pkg/helper"
 	"bufio"
 	"fmt"
 	"math"
+
+	"github.com/azul915/go_algorithm_solution/pkg/helper"
 
 	"os"
 	"sort"

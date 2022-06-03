@@ -2,12 +2,12 @@ package chap5
 
 import (
 	// "fmt"
-	"algorithm_solution/pkg/helper"
+	"github.com/azul915/go_algorithm_solution/pkg/helper"
 )
 
 // p.154
 // 5.1
-// https://github.com/drken1215/book_algorithm_solution/blob/master/solutions/chap05.md#51-edpc-c---vacation
+// https://github.com/drken1215/book_github.com/azul915/go_algorithm_solutionblob/master/solutions/chap05.md#51-edpc-c---vacation
 func Question5_1() {
 
 	N := 10

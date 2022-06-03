@@ -1,9 +1,10 @@
 package chap5
 
 import (
-	"algorithm_solution/pkg/helper"
 	"fmt"
 	"math"
+
+	"github.com/azul915/go_algorithm_solution/pkg/helper"
 )
 
 func Code5_1() {
